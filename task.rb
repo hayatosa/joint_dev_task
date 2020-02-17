@@ -67,7 +67,8 @@ end
 
 def q9
   names = ["田中", "佐藤", "佐々木", "高橋"]
-  # 以下に回答を記載　なぜ変数内のnameとiはこの順序？？
+  # 以下に回答を記載　
+  # なぜ変数内のnameとiはこの順序？←index番号は最後に書く決まり
   names.each.with_index(1) do |name,i|
     puts "会員No.#{i} #{name}さん"
   end
@@ -77,11 +78,7 @@ def q10
   foods = %w(いか たこ うに しゃけ うにぎり うに軍艦 うに丼)
     # 以下に回答を記載
   foods.select do |f|
-    if f.include?("うに")
-      puts "#{f}は好物です"
-    else
-      puts "#{f}はまぁまぁ好きです"
-    end
+   puts f.include?("うに")? "#{f}は好物です" : "#{f}はまぁまぁ好きです"
   end
 end
 
@@ -89,38 +86,49 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-
+  puts "ユーザーの趣味一覧"
+  sports.flatten!.uniq!
+  sports.each.with_index(1) do |sport,i|
+    puts "No#{i} #{sport}"
+  end
 end
+  #原本がいじられてしまう破壊的メソッドはあまり使わないほうがよいか
 
 def q12
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
-
+  p data[:user][:name]
 end
+  # p data.dig(:user,:name)も同じ
 
 def q13
   user_data = { name: "神里", age: 31, address: "埼玉" }
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-
+  p user_data.update(update_data)
 end
+  # mergeは被った値は合算
 
 def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
-
+  p array = data.keys
 end
+  # data.to_aでキーとバリュー取り出し
+
 
 def q15
   data1 = { name: "saitou", hobby: "soccer", age: 33, role: "admin" }
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-
+  puts data1.key?(:age)? "OK" : "NO"
+  puts data2.key?(:age)? "OK" : "NO"
 end
+  # has_key? include? member? はどれも同じ
 
 def q16
   users = [
