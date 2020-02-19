@@ -87,12 +87,10 @@ def q11
 
   # 以下に回答を記載
   puts "ユーザーの趣味一覧"
-  sports.flatten!.uniq!
-  sports.each.with_index(1) do |sport,i|
+  sports.flatten.uniq.each.with_index(1) do |sport,i|
     puts "No#{i} #{sport}"
   end
 end
-  #原本がいじられてしまう破壊的メソッドはあまり使わないほうがよいか
 
 def q12
   data = { user: { name: "satou", age: 33 } }
@@ -139,12 +137,27 @@ def q16
   ]
 
   # 以下に回答を記載
+  users.each { |user| puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}歳です。" }
 
 end
 
 class UserQ17
   # 以下に回答を記載
+  def initialize (name:,age:,gender:,admin:)
+    @name = name
+    @age = age
+    @gender = gender
+    @admin = admin ? "有り":"無し"
+  end
 
+  def info
+    puts <<~TEXT
+      名前：#{@name}
+      年齢：#{@age}
+      性別：#{@gender}
+      管理者権限：#{@admin}
+    TEXT
+  end
 end
 
 def q17
@@ -159,7 +172,18 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(name:,age:)
+    @name = name
+    @age = age
+  end
 
+  def introduce
+    if @age >= 20
+      "こんにちは，#{@name}と申します。宜しくお願いいたします。"
+    else
+      "はいさいまいど〜，#{@name}です！！！"
+    end
+  end
 end
 
 def q18
