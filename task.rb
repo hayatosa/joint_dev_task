@@ -147,15 +147,16 @@ class UserQ17
     @name = name
     @age = age
     @gender = gender
-    @admin = admin ? "有り":"無し"
+    @admin = admin
   end
 
   def info
+    admin = @admin ? "有り" : "無し"
     puts <<~TEXT
       名前：#{@name}
       年齢：#{@age}
       性別：#{@gender}
-      管理者権限：#{@admin}
+      管理者権限：#{admin}
     TEXT
   end
 end
@@ -197,10 +198,10 @@ end
 
 class Item
   # 以下を修正して下さい
-
   def initialize(name)
     @name = name
   end
+
 end
 
 def q19
