@@ -224,8 +224,6 @@ end
 
 class Zoo
   # 以下に回答を記載
-  attr_reader :entry_fee
-
   def initialize(**params)
     @entry_fee = params[:entry_fee]
   end
@@ -233,7 +231,7 @@ class Zoo
   def info_entry_fee(user)
     price = (
       case user.age
-        
+
       when 0..5
         @entry_fee[:infant]
       when 6..12
